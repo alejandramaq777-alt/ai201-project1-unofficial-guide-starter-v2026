@@ -147,27 +147,35 @@ Write down specifics before the meeting. 'It's not working' is hard to act on; '
      visible. Milestone 4. -->
 
 **Question:**
-
-**Answer:**
+```
+Where is the best place to study?
 
 ```
+**Answer:**
+
+```Based on the provided documents, there is no single "best" place to study, but several spots are recommended depending on your needs:
+
+* **Ridgeway Café** before 10am is noted as empty, quiet, with good coffee (thread_study_spots.txt).
+* **Open lounges** on floors 2 through 5 of the science building are unlocked and almost always empty (thread_study_spots.txt).
+* **The library third floor** is recommended if you need reliable silence (thread_study_spots.txt).
+* **Library group study rooms** can also be booked by one person and used alone (thread_study_spots.txt).
 ```
 
 **My relevance cutoff:**
 
-<!-- The number you set in config.py, and how you got there.
-
-     You ran five questions your corpus covers and the five in OUT_OF_SCOPE
-     that it clearly doesn't, and wrote down the best distance for each. What
-     did those two groups look like? Where was the gap? Put the actual numbers
-     here — the table below wants all ten rows.
-
-     Milestone 4. -->
+<!-- When looking at the best distance, my relevance cutoff would be 0.55. The reason I chose 0.55 is because all five of my valid in-corpus questions had a best distance score of 0.504 or lower. Compared to my out-of-scope trick questions scored 0.617 or higher. Which set the threshold at 0.55, seperating real questions from off-the-scope ones. -->
 
 | Question | In corpus? | Best distance |
-|---|---|---|
-|  |  |  |
-
+|"Up to how many weeks can you take to declare a course late?"|yes|best distance 0.458|
+|"Would transfering credits be hard if I only took general requirements?|yes|best distance 0.372|
+|What would students say about Ridgeway Cafe for studying?|yes|best distance 0.403|
+|How much percentage do some professors take off each day it's late?|yes|best distance 0.395
+|Are office hours more effective when wanting to reach out to a proffesor?|yes|best distance 0.504
+|Does the app show accurate machine availability?|no|best distance 0.617
+|What can I talk to my RA about?|no|best distance 0.729
+|What should I do if I need an extension?|no|best distance 0.816
+|If I have problems with my group what should I do?|no|best distance 0.643,
+|Where is considered the best place to eat?|no|best distance 0.735
 ## How I Used AI
 
 <!-- Two specific moments. For each: what you asked for, what came back, and
