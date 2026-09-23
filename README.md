@@ -21,37 +21,16 @@
 
 ## What This Does
 
-<!-- Three or four sentences. Which corpus you picked, and the kinds of
-     questions your system answers. Write it for someone who has never seen
-     this repo.
-
-     Milestone 5. -->
+<!-- For this project I picked the corpus called advice_threads. When picking this corpus I asked questions that pertained to information that can be found in this corpus. For example transfering credits, when you can declare a course late, What does students say about Ridgeway Cafe and many more. This system is designed to be able to take a question you may have and provide an answer to your question. If there is a question that doesn't have information provided in the advice_threads, then the system will prompt disclose not having enough information.  -->
 
 ## Chunking Strategy
 
-**Chunk size:**
-**Overlap:**
+**Chunk size:** 150-250 
+**Overlap:** 0 
 
-<!-- What about YOUR documents made you pick these numbers? Short posts and
-     long sectioned guides don't want the same chunking, and "800 seemed
-     reasonable" earns nothing. Point at something you noticed when you read
-     the documents in Milestone 1.
-
-     If you changed your mind partway through, say so and say why. That's worth
-     more than pretending you got it right first time.
-
-     Milestone 3. -->
+<!-- The documents in our dataset are short online forum posts and threads. Since these posts are short and have casual sentences, setting a stricter character limit and splitting strictly at sentence boundaries I ensure each chunk comtains a complete thought. This range is large enough to capture a full forum reply but small enough to prevent completely different student topics from getting blended together into the same chunk. -->
 
 ## Sample Chunks
-
-<!-- Five chunks, pasted as text. Label each one and name the file it came from
-     AND the function that produced it — the grader checks your code against
-     what you claim here.
-
-     `python app.py chunks -n 5` prints all three for you. Copy them straight
-     across.
-
-     Milestone 3. -->
 
 **Chunk 1** 
 ======================================================================
@@ -142,10 +121,6 @@ Write down specifics before the meeting. 'It's not working' is hard to act on; '
 ```
 
 ## Sample Answer
-
-<!-- One complete question and answer, pasted as text, with the source line
-     visible. Milestone 4. -->
-
 **Question:**
 ```
 Where is the best place to study?
@@ -178,18 +153,15 @@ Where is the best place to study?
 |Where is considered the best place to eat?|no|best distance 0.735
 ## How I Used AI
 
-<!-- Two specific moments. For each: what you asked for, what came back, and
-     what you changed about it.
-
-     "I asked Claude to write the chunking function from my notes. It ignored
-     the overlap, so I added that myself" is the level of detail we're after.
-     "I used AI to help me code" is not.
-
-     Milestone 5. -->
-
 **1.**
+```
+I asked Google gemini to explain to me certain terminology about this project. For example, what is corpus, or what was chunks. Even though this may seem simple to some, for me I struggled when it came to understanding what I was doing fundamentally and after asking AI, I was able to get a ground understaning on what to expect in this project. 
+```
 
 **2.**
+```
+I asked Claude to help me to evaluate the code I wrote in chunker.py. I asked Claude to look through my code and make sure it made sense and was doing what I needed the code to do. At first Claude prompted to rewrite my whole code but I didn't want it to rewrite my whole code. I just wanted suggestions how to improve my code. But with being persistant and changing up my wording, I was able to get the advice I needed.  
+```
 
 <!-- ── Stretch features ─────────────────────────────────────────────────────
      Doing one? Say so here BEFORE you start. A feature this README never
@@ -221,8 +193,8 @@ Where is the best place to study?
 | 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
 | 2. Every answer names a source | 5 of 5 |  |  |  |  |
 | 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
-| 5. | | | | | |
+| 4. |Average Chunk Size  | | | | |
+| 5. |Speed | | | | |
 
 <!-- Underneath, paste the REAL output for each criterion from one of your
      runs — the actual text your system produced, not a description of it.
@@ -286,8 +258,8 @@ Where is the best place to study?
 | 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
 | 2. Every answer names a source | 5 of 5 |  |  |  |  |
 | 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
-| 5. | | | | | |
+| 4. |Average Chunk Size | | | | |
+| 5. |Speed | | | | |
 
 **Did it help?**
 
@@ -303,14 +275,10 @@ Where is the best place to study?
 <!-- For each criterion still missed after your fix: what you'd do about it,
      and why you stopped where you did.
 
-     "I ran out of time" is fine if it's true. Pretending nothing is left is
-     not.
-
-     Milestone 5. -->
+     When looking at what I missed, the reason I stopped where I did is because I am still confused on what I am trying to do. I also did ran out of time but more so that I needed more explanation on what was expected from me in this project.  -->
 
 ## What I'd Do Differently
 
-<!-- Knowing what you know now — which of your five criteria would you write
-     differently, and why?
+<!-- After looking at my criteria I would change the first one: "For at least 4 of my 5 test questions, the retrieved chunks include one that contains the answer". The reason I would chnage this criteria in specific is because I believe that the system should only answer if they have the answer. Since 4 out 5 out of the retrieved chunks can have one of the answers, it leaves the user confused and have more questions then answers. 
 
-     Milestone 5. -->
+-->

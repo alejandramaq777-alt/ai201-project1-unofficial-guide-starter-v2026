@@ -54,8 +54,8 @@ in at least 4 of 5 tries.
 
 ## 4. Something about your chunks
 
-<!-- Average chunk size should stay between 150-250 words to allow meaningful context but also short enough to not overload the user with information. 
- -->
+Average chunk size should stay between 150-250 characters to allow meaningful context but also short enough to not overload the user with information. 
+
 
 
 
@@ -67,8 +67,7 @@ in at least 4 of 5 tries.
 
 ## 5. Your choice
 
-<!-- For at least 4 out of 5 test quieres, the system must generate its complete response in under 3.0 seconds from the moment the user presses enter. 
- -->
+For at least 4 out of 5 test quieres, the system must generate its complete response in under 3.0 seconds from the moment the user presses enter. 
 
 
 
