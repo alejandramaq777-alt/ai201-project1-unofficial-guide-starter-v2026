@@ -103,7 +103,7 @@ def cmd_chunks(args):
     from ingest import load_documents
     from chunker import split_documents
 
-    chunks = split_documents(load_documents(args.corpus or config.CORPUS))
+    chunks = split_documents(load_documents(args.corpus or config.CORPUS),chunk_size=200)
 
     if args.from_doc:
         sample = _chunks_from_doc(chunks, args.from_doc)

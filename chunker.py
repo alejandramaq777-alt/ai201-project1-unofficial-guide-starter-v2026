@@ -81,23 +81,63 @@ def fallback_split(
 
 
 def split_documents(documents: list[Document]) -> list[Chunk]:
-    """
-    Split documents into chunks. ⚠️ REPLACE THE BODY OF THIS IN MILESTONE 3.
+    chunk: list[Chunk] = []
 
-    Right now it just calls the fallback. That is the plain, generic behaviour
-    the brief is talking about.
+    target_size = 200
+    max_size = 250 
 
-    When you write your own strategy, set `produced_by` to
-    "chunker.py::split_documents" so your README's Sample Chunks section names
-    the right function. `app.py chunks` prints that string for you.
+    for doc in documents:
 
-    Things worth thinking about before you write any code:
-      - Are your documents short posts or long guides?
-      - Is the useful information in one sentence, or spread over a paragraph?
-      - Would splitting on paragraph breaks keep more thoughts intact than
-        splitting on a character count?
-    """
-    return fallback_split(documents)
+        sentences = doc.text.split(".")
+
+        current_chunk_text = ""
+        current_chunk_index = 0
+
+        for sentence in sentences:
+            sentence = sentence.strip()
+            if not sentence:
+                continue
+            if not sentence.endswith("."):
+                sentence += "."
+            if len(sentence) > max_size:
+                words = sentence.split()
+                for word in words:
+                    if len(current_chunk_text) + len(word) + 1 <= target_size:
+                        current_chunk_text += (" " if current_chunk_text else "") + word
+                    else:
+                        if current_chunk_text:
+                            chunks.append(Chunk(
+                                text=current_chunk_text,
+                                source=doc.source,
+                                index=current_chunk_index,
+                                produced_by="chunker.py::split_documents",
+                            ))
+                            current_chunk_index += 1
+                        current_chunk_text = word
+                continue
+            if len(current_chunk_text) + len(sentence) + 1 <= target_size:
+                if current_chunk_text:
+                    current_chunk_text += " " + sentence
+                else:
+                    current_chunk_text = sentence
+            else:
+                if current_chunk_text:
+                    chunks.append(Chunk(
+                        text=current_chunk_text,
+                        source=doc.source,
+                        index=current_chunk_index,
+                        produced_by="chunker.py::split_documents",
+                    ))
+                    chunk_index += 1
+                current_chunk_text = sentence
+        if current_chunk_text:
+            chunks.append(Chunk(
+                text=current_chunk_text,
+                source=doc.source,
+                index=current_chunk_index,
+                produced_by="chunker.py::split_documents",
+            ))            
+    return chunks
 
 
 def describe(chunks: list[Chunk]) -> str:
