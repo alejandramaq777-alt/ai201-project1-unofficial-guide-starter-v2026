@@ -23,8 +23,7 @@ For at least 4 of my 5 test questions, the retrieved chunks include one that
 contains the answer.
 
 **Why this target:**
-<!-- e.g. "One of my questions is about a topic only two documents mention, so
-     I expect that one to be hard." -->
+<!-- The reason this criteria is important is because it doesn't give a user a half answer or having to do a follow up question to the question they asked. Making it quick for the user to be able to get the answers they are looking for. -->
 
 ---
 
@@ -33,8 +32,7 @@ contains the answer.
 Every answer the system produces names at least one source document.
 
 **Why this target:**
-<!-- Why all five and not four? What about your setup makes that achievable —
-     or what would have to go wrong for it not to be? -->
+<!-- The reason why the system names where the answer comes from one source document because it allows for the questionnaire to have access to where the answer is coming from. -->
 
 ---
 
@@ -50,47 +48,32 @@ in at least 4 of 5 tries.
      just keep five of them, or the "4 of 5" above has nothing to be 4 of. -->
 
 **Why this target:**
-<!-- What did your distances look like when you set the cutoff in Milestone 4?
-     Was there a clean gap, or did the two groups overlap? -->
+<!-- The reason this criteria is important because if there is a question that a user asks that we don't have enough information on, the system should state so. It allows for the user to see what their next question can be or see what we need to add to the system to be able to answer the users questions next time. -->
 
 ---
 
 ## 4. Something about your chunks
 
-<!-- YOU WRITE THIS ONE.
-
-     How would you know if your chunks were the right size? Name something
-     countable or observable.
-
-     Examples of the right shape — don't copy these, they should come from
-     what you actually saw in Milestone 3:
-       - "At least 4 of 5 sampled chunks read as a complete thought, with no
-          sentence cut in half at either end."
-       - "No chunk is shorter than 200 characters, since anything below that
-          in my corpus turned out to be a heading with no content under it." -->
+<!-- Average chunk size should stay between 150-250 words to allow meaningful context but also short enough to not overload the user with information. 
+ -->
 
 
 
 **Why this target:**
-
+<!-- The reason I chose a chunk size of 150-250 because it allows for a meaningful context to be displayed. Giving the user the necessary information that answers their question in a complex matter -->
 
 
 ---
 
 ## 5. Your choice
 
-<!-- YOU WRITE THIS ONE TOO.
-
-     Pick something you actually care about getting right. It could be about
-     speed, about refusals, about a particular kind of question your corpus
-     handles badly, about source attribution being correct rather than merely
-     present — anything, as long as it names a number or an observable
-     outcome. -->
+<!-- For at least 4 out of 5 test quieres, the system must generate its complete response in under 3.0 seconds from the moment the user presses enter. 
+ -->
 
 
 
 **Why this target:**
-
+<!-- I chose 3.0 seconds because any longer woukd make the system seem slow. We want this system to be able to produce quick and meaningful work without disrupting the workflow of the user. -->
 
 
 ---
