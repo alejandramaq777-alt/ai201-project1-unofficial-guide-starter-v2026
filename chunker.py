@@ -81,15 +81,13 @@ def fallback_split(
 
 
 def split_documents(documents: list[Document]) -> list[Chunk]:
-    chunk: list[Chunk] = []
+    chunks: list[Chunk] = []
 
     target_size = 200
-    max_size = 250 
+    max_size = 250
 
     for doc in documents:
-
         sentences = doc.text.split(".")
-
         current_chunk_text = ""
         current_chunk_index = 0
 
@@ -99,44 +97,53 @@ def split_documents(documents: list[Document]) -> list[Chunk]:
                 continue
             if not sentence.endswith("."):
                 sentence += "."
+
             if len(sentence) > max_size:
                 words = sentence.split()
                 for word in words:
-                    if len(current_chunk_text) + len(word) + 1 <= target_size:
-                        current_chunk_text += (" " if current_chunk_text else "") + word
+                    candidate = f"{current_chunk_text} {word}".strip()
+                    if len(candidate) <= target_size:
+                        current_chunk_text = candidate
                     else:
                         if current_chunk_text:
-                            chunks.append(Chunk(
-                                text=current_chunk_text,
-                                source=doc.source,
-                                index=current_chunk_index,
-                                produced_by="chunker.py::split_documents",
-                            ))
+                            chunks.append(
+                                Chunk(
+                                    text=current_chunk_text,
+                                    source=doc.source,
+                                    index=current_chunk_index,
+                                    produced_by="chunker.py::split_documents",
+                                )
+                            )
                             current_chunk_index += 1
                         current_chunk_text = word
                 continue
-            if len(current_chunk_text) + len(sentence) + 1 <= target_size:
-                if current_chunk_text:
-                    current_chunk_text += " " + sentence
-                else:
-                    current_chunk_text = sentence
+
+            candidate = f"{current_chunk_text} {sentence}".strip()
+            if len(candidate) <= target_size:
+                current_chunk_text = candidate
             else:
                 if current_chunk_text:
-                    chunks.append(Chunk(
-                        text=current_chunk_text,
-                        source=doc.source,
-                        index=current_chunk_index,
-                        produced_by="chunker.py::split_documents",
-                    ))
-                    chunk_index += 1
+                    chunks.append(
+                        Chunk(
+                            text=current_chunk_text,
+                            source=doc.source,
+                            index=current_chunk_index,
+                            produced_by="chunker.py::split_documents",
+                        )
+                    )
+                    current_chunk_index += 1
                 current_chunk_text = sentence
+
         if current_chunk_text:
-            chunks.append(Chunk(
-                text=current_chunk_text,
-                source=doc.source,
-                index=current_chunk_index,
-                produced_by="chunker.py::split_documents",
-            ))            
+            chunks.append(
+                Chunk(
+                    text=current_chunk_text,
+                    source=doc.source,
+                    index=current_chunk_index,
+                    produced_by="chunker.py::split_documents",
+                )
+            )
+
     return chunks
 
 
