@@ -162,6 +162,10 @@ I asked Google gemini to explain to me certain terminology about this project. F
 ```
 I asked Claude to help me to evaluate the code I wrote in chunker.py. I asked Claude to look through my code and make sure it made sense and was doing what I needed the code to do. At first Claude prompted to rewrite my whole code but I didn't want it to rewrite my whole code. I just wanted suggestions how to improve my code. But with being persistant and changing up my wording, I was able to get the advice I needed.  
 ```
+### Unit 2 Use of AI 
+```
+For unit 2 of my project, I used copilot to help me understand and eliberate what my runs were producing. At first I was confused at what I was looking for and needed it to be broken down, so I asked copiolt to help me to understand the runs. I also asked for copilot to spot patterns in my failures and used those spotted patterns and tested them myself to see if it was onto something or was just sending me through a loop.  
+```
 
 <!-- ── Stretch features ─────────────────────────────────────────────────────
      Doing one? Say so here BEFORE you start. A feature this README never
@@ -316,7 +320,7 @@ My diagnosis showed that sentence-based chunking averaged 142 characters, below 
      tell.
 
      Milestone 4. -->
-     
+
      The change helped criterion 4: average chunk size increased from 142 to 167 characters and met the target. The retrieval and gate criteria were also met after the change. I have not measured response speed, so I cannot judge criterion 5 yet
 
 ## What's Still Broken
@@ -326,8 +330,12 @@ My diagnosis showed that sentence-based chunking averaged 142 characters, below 
 
      When looking at what I missed, the reason I stopped where I did is because I am still confused on what I am trying to do. I also did ran out of time but more so that I needed more explanation on what was expected from me in this project.  -->
 
+     After the paragraph-based chunking change, criteria 1–4 were met: the answer appeared in retrieved chunks for all five questions, every answer named a source, the gate refused all five out-of-scope questions, and the average chunk size was 167 characters. Criterion 5 is still unverified, not failed, because I did not measure response time. I need to time the questions to know whether the system meets the 3-second target.
+
 ## What I'd Do Differently
 
 <!-- After looking at my criteria I would change the first one: "For at least 4 of my 5 test questions, the retrieved chunks include one that contains the answer". The reason I would chnage this criteria in specific is because I believe that the system should only answer if they have the answer. Since 4 out 5 out of the retrieved chunks can have one of the answers, it leaves the user confused and have more questions then answers. 
 
 -->
+
+Before running the evaluation, I would decide how I would measure response time and make sure the scoring method checks whether an answer contains the expected information, rather than requiring an exact phrase. For a future version, I would set the retrieval target to 5 out of 5 because I want every test question to retrieve a chunk with its answer. I would set that target before testing, not change it afterward based on the results.
