@@ -288,12 +288,13 @@ Criterion 5: This criterion is not diagnosed yet because response time was not m
 ## The Improvement
 
 **What I changed:**
+I added a paragraph-based chunking strategy called paragraph_split() that groups neighboring paragraphs into chunks near 200 characters, with a maximum of 250. I indexed it as v2 so I could compare it while keeping the original index available.
 
 **Why I picked it:**
 
 <!-- Connect it to a specific diagnosis above in one sentence. If you can't,
      you picked a fix because it sounded impressive. -->
-
+My diagnosis showed that sentence-based chunking averaged 142 characters, below my 150-character minimum. Grouping paragraphs produced an average of 167 characters, which is within my target range.
 ### Run Log — After
 
 <!-- Same format, same five criteria, three runs each.
@@ -301,11 +302,11 @@ Criterion 5: This criterion is not diagnosed yet because response time was not m
 
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
 |---|---|---|---|---|---|
-| 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
-| 2. Every answer names a source | 5 of 5 |  |  |  |  |
-| 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. |Average Chunk Size | | | | |
-| 5. |Speed | | | | |
+| 1. Retrieved chunk contains the answer | 4 of 5 | 5/5 |5/5  | 5/5 | 5/5 | MET |
+| 2. Every answer names a source | 5 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 3. Gate stops out-of-corpus questions | 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 4. |Average Chunk Size | 150-250 characters|167 characters | 167 characters|167 characters |MET |
+| 5. |Speed |At least 4 of 5 under 3.0 seconds |Not measured |Not measured |Not measured |NOT MEASURED|
 
 **Did it help?**
 
@@ -315,6 +316,8 @@ Criterion 5: This criterion is not diagnosed yet because response time was not m
      tell.
 
      Milestone 4. -->
+     
+     The change helped criterion 4: average chunk size increased from 142 to 167 characters and met the target. The retrieval and gate criteria were also met after the change. I have not measured response speed, so I cannot judge criterion 5 yet
 
 ## What's Still Broken
 
