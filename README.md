@@ -190,15 +190,59 @@ I asked Claude to help me to evaluate the code I wrote in chunker.py. I asked Cl
 
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
 |---|---|---|---|---|---|
-| 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
-| 2. Every answer names a source | 5 of 5 |  |  |  |  |
-| 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. |Average Chunk Size  | | | | |
-| 5. |Speed | | | | |
+| 1. Retrieved chunk contains the answer | 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 2. Every answer names a source | 5 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 3. Gate stops out-of-corpus questions | 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 4. Average Chunk Size  |150-250 characters |142 characters |142 characters |142 characters | MISSED|
+| 5. Speed | At least 4 of 5 under 3.0 seconds| Not measured| Not measured| Not measured|NOT MEASURED|
 
 <!-- Underneath, paste the REAL output for each criterion from one of your
      runs — the actual text your system produced, not a description of it.
      Name the file and function that produced it. -->
+## Run Evidence
+
+Source: `results/run_2026-09-29_0022_late_penalty.md`
+Produced by: `run_eval.py::main`
+Retrieval: `store.py::search`; chunks from `chunker.py::split_documents`
+
+### Up to how many weeks can you take to declare a course late?
+
+You can declare a course pass/fail late up to week eight (thread_pass_fail.txt and thread_first_year_regret.txt).
+
+### Would transfering credits be hard if I only took general requirements?
+
+Transfer credits almost always count toward general requirements.
+
+Source: thread_transfer_credits.txt
+
+### What would students say about Ridgeway Cafe for studying?
+
+Students say that Ridgeway Café is empty, quiet, has good coffee, and they do not push you out, especially before 10 am (*thread_study_spots.txt*).
+
+### How much percentage do some professors take off each day it's late?
+
+According to the syllabus, some professors take off 10% a day for late work. (Source: thread_late_work.txt)
+
+### Are office hours more effective when wanting to reach out to a proffesor?
+
+Yes, office hours are dramatically more effective than email for anything that takes more than two sentences to answer (thread_professor_email.txt).
+
+### Gate on out-of-scope questions
+
+Produced by: `run_eval.py::check_out_of_scope`
+
+Gate refused 5 of 5:
+- What is the capital of Mongolia?
+- How do I change the oil in a diesel engine?
+- Who won the 1994 World Cup?
+- What is the recommended dosage of ibuprofen for a headache?
+- How do I write a for loop in Rust?
+
+### Average chunk size
+
+Command: `python chunker.py`
+
+Output: 87 chunks, 142 characters on average (shortest 14, longest 210), produced by `chunker.py::split_documents`.
 
 ## Verdicts
 
@@ -213,11 +257,11 @@ I asked Claude to help me to evaluate the code I wrote in chunker.py. I asked Cl
 
 | # | Criterion | Verdict | How I decided |
 |---|---|---|---|
-| 1 |  |  |  |
-| 2 |  |  |  |
-| 3 |  |  |  |
-| 4 |  |  |  |
-| 5 |  |  |  |
+| 1 |  Retrieved chunk contains the answer | MET | All of the questions had the answers I expected them to have. |
+| 2 | Every answer names a source | MET | All the answers name the thread they got the answer from |
+| 3 | Gate stops out-of-corpus questions | MET | when running the tests it shows which questions are out of corpus questions |
+| 4 | Average Chunk Size | MISSED | When I ran chunker.py and got the anverage chunk size, it says that the average chunk size is 142 characters. Meaning that it doesn't hit the 150-250 range.  |
+| 5 | Speed | NOT MEASURED | The reason this was not measured its because when running the tests it didn't display the time it took to produce the answer.  |
 
 ## Diagnoses
 

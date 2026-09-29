@@ -56,7 +56,9 @@ in at least 4 of 5 tries.
 
 Average chunk size should stay between 150-250 characters to allow meaningful context but also short enough to not overload the user with information. 
 
+Revised in unit 2: When I run split_documents() on all documents in my selected corpus, the arithmetic mean of len(chunk.text) across all returned chunks must be between 150 and 250 characters, inclusive.
 
+Why revised: The original did not specify which chunks to include or how to calculate their average. This defines the measurement while keeping the same target.
 
 
 **Why this target:**
@@ -69,7 +71,9 @@ Average chunk size should stay between 150-250 characters to allow meaningful co
 
 For at least 4 out of 5 test quieres, the system must generate its complete response in under 3.0 seconds from the moment the user presses enter. 
 
+Revised in unit 2: For my five in-scope test questions, measure the time from submitting each question until the complete answer appears. With caching off, run each question three times; at least four of the five questions must have a median response time under 3.0 seconds.
 
+Why revised: The original criterion didn’t specify how to handle variation between runs, and the evaluation report doesn’t record elapsed time. Using three uncached runs and comparing each question’s median gives me a consistent way to assess it.
 
 **Why this target:**
 <!-- I chose 3.0 seconds because any longer woukd make the system seem slow. We want this system to be able to produce quick and meaningful work without disrupting the workflow of the user. -->
