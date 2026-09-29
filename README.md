@@ -282,7 +282,9 @@ Output: 87 chunks, 142 characters on average (shortest 14, longest 210), produce
      low, and which one you'd tighten and to what.
 
      Milestone 3. -->
+Criterion 4: The chunking stage caused this miss. split_documents() groups complete sentences toward a 200-character target, but it can flush a chunk shorter than 150 when the next sentence would exceed the target. Short final chunks can also pull down the overall average. The measured average was 142 characters, below the 150-character minimum.
 
+Criterion 5: This criterion is not diagnosed yet because response time was not measured. The evaluation report records answers but not elapsed time, so I can’t tell whether the system meets the 3-second target or identify a slow stage.
 ## The Improvement
 
 **What I changed:**
